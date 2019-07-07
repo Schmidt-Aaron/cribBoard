@@ -10,6 +10,8 @@ export default class App extends Component {
     this.state = {
       players: 2,
       activeGame: true,
+      currentPlayer: "",
+      pointRange: [],
       playerOneName: "Player One",
       playerOneCurrPoints: 0,
       playerOnePrevPoints: 0,
@@ -27,7 +29,13 @@ export default class App extends Component {
       playerFourPrevPoints: 0,
       playerFourhistory: []
     };
+
     this.updateScore = this.updateScore.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.selectPlayerOne = this.selectPlayerOne.bind(this);
+    this.selectPlayerTwo = this.selectPlayerTwo.bind(this);
+    this.undoSelect = this.undoSelect.bind(this);
+    this.makeRange = this.makeRange.bind(this);
   }
 
   /*
@@ -41,17 +49,92 @@ export default class App extends Component {
     let prevStateString = `player${playerNum}PrevPoints`;
     let currPoints = this.state[currStateString];
     let prevPoints = this.state[prevStateString];
+    if (this.state.activeGame === true) {
+      if (currPoints + points > 121) {
+        this.setState({
+          [currStateString]: 121,
+          activeGame: false,
+          currentPlayer: "",
+          pointRange: []
+        });
+      } else {
+        this.setState({
+          [currStateString]: (currPoints += points),
+          currentPlayer: "",
+          pointRange: []
+        });
+      }
+    }
+  }
+
+  resetGame() {
     this.setState({
-      [currStateString]: (currPoints += points)
+      activeGame: true,
+      pointRange: [],
+      currentPlayer: "",
+      playerOneCurrPoints: 0,
+      playerOnePrevPoints: 0,
+      playerOnehistory: [],
+      playerTwoCurrPoints: 0,
+      playerTwoPrevPoints: 0,
+      playerTwohistory: [],
+      playerThreeCurrPoints: 0,
+      playerThreePrevPoints: 0,
+      playerThreehistory: [],
+      playerFourCurrPoints: 0,
+      playerFourPrevPoints: 0,
+      playerFourhistory: []
     });
+  }
+
+  selectPlayerOne() {
+    this.setState({
+      currentPlayer: "One"
+    });
+    console.log("player One selected");
+  }
+
+  selectPlayerTwo() {
+    this.setState({
+      currentPlayer: "Two"
+    });
+    console.log("player Two selected");
+  }
+
+  undoSelect() {
+    this.setState({
+      currentPlayer: "",
+      points: 0,
+      pointRange: []
+    });
+    console.log("undo selected");
+  }
+
+  makeRange(start, end) {
+    let range = [];
+    for (let n = start; n <= end; n++) {
+      range.push(n);
+    }
+    this.setState({
+      pointRange: range
+    });
+    console.log(this.state.range);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Title />
+        <Title resetGame={this.resetGame} />
         <Players {...this.state} />
-        <Menu updateScore={this.updateScore} />
+        <Menu
+          {...this.state}
+          updateScore={this.updateScore}
+          resetGame={this.resetGame}
+          selectPlayerOne={this.selectPlayerOne}
+          selectPlayerTwo={this.selectPlayerTwo}
+          undoSelect={this.undoSelect}
+          makeRange={this.makeRange}
+        />
       </View>
     );
   }
