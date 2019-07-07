@@ -3,14 +3,33 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 // Single player component
 const SinglePlayer = props => {
+  console.log(props.points);
+
+  const currentPoints = arr => {
+    return arr.reduce((a, b) => a + b, 0);
+  };
+
+  // removes last element from score array than returns sum
+  const previousScore = arr => {
+    let sum = 0;
+    arr.map((n, i) => {
+      if (i < arr.length - 1) {
+        sum += +n;
+      }
+    });
+    return sum;
+  };
+
+  console.log(`prev: ${previousScore(props.points)}`);
+
   return (
     <View style={styles.container}>
       <View style={styles.playerNameContainer}>
         <Text style={styles.playerName}>{props.name}</Text>
       </View>
       <View style={styles.scores}>
-        <Text style={styles.points}>{props.points || 0}</Text>
-        <Text>{props.prevPoints || "Previous Score not available"}</Text>
+        <Text style={styles.points}>{currentPoints(props.points)}</Text>
+        <Text>{previousScore(props.points)}</Text>
       </View>
       <View style={styles.playerMenu}>
         <Button

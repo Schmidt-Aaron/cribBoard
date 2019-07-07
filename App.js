@@ -15,19 +15,19 @@ export default class App extends Component {
       playerOneName: "Player One",
       playerOneCurrPoints: 0,
       playerOnePrevPoints: 0,
-      playerOnehistory: [],
+      playerOneHistory: [0],
       playerTwoName: "Player Two",
       playerTwoCurrPoints: 0,
       playerTwoPrevPoints: 0,
-      playerTwohistory: [],
+      playerTwoHistory: [0],
       playerThreeName: "Player Three",
       playerThreeCurrPoints: 0,
       playerThreePrevPoints: 0,
-      playerThreehistory: [],
+      playerThreeHistory: [0],
       playerFourName: "Player Four",
       playerFourCurrPoints: 0,
       playerFourPrevPoints: 0,
-      playerFourhistory: []
+      playerFourHistory: [0]
     };
 
     this.updateScore = this.updateScore.bind(this);
@@ -44,27 +44,37 @@ export default class App extends Component {
    * @ number = 1 - 29 (not 19)
    * TODO: error handling for player #
    */
-  updateScore(playerNum, points) {
-    let currStateString = `player${playerNum}CurrPoints`;
-    let prevStateString = `player${playerNum}PrevPoints`;
-    let currPoints = this.state[currStateString];
-    let prevPoints = this.state[prevStateString];
-    if (this.state.activeGame === true) {
-      if (currPoints + points > 121) {
-        this.setState({
-          [currStateString]: 121,
-          activeGame: false,
-          currentPlayer: "",
-          pointRange: []
-        });
-      } else {
-        this.setState({
-          [currStateString]: (currPoints += points),
-          currentPlayer: "",
-          pointRange: []
-        });
-      }
-    }
+  // updateScore(player, points) {
+  //   let currStateString = `player${player}CurrPoints`;
+  //   let prevStateString = `player${player}PrevPoints`;
+  //   let currPoints = this.state[currStateString];
+  //   let prevPoints = this.state[prevStateString];
+  //   if (this.state.activeGame === true) {
+  //     if (currPoints + points > 121) {
+  //       this.setState({
+  //         [currStateString]: 121,
+  //         activeGame: false,
+  //         currentPlayer: "",
+  //         pointRange: []
+  //       });
+  //     } else {
+  //       this.setState({
+  //         [currStateString]: (currPoints += points),
+  //         currentPlayer: "",
+  //         pointRange: []
+  //       });
+  //     }
+  //   }
+  // }
+  updateScore(player, points) {
+    let updateString = `player${player}History`;
+    console.log(this.state[updateString]);
+    let tempArr = this.state[updateString];
+    tempArr.push(points);
+    console.log(tempArr);
+    this.setState({
+      [updateString]: tempArr
+    });
   }
 
   resetGame() {

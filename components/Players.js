@@ -6,11 +6,13 @@ const Players = props => {
   return (
     <View style={styles.container}>
       <SinglePlayer
-        points={props.playerOneCurrPoints}
+        // points={props.playerOneCurrPoints}
+        points={props.playerOneHistory}
         name={props.playerOneName}
       />
       <SinglePlayer
-        points={props.playerTwoCurrPoints}
+        // points={props.playerTwoCurrPoints}
+        points={props.playerTwoHistory}
         name={props.playerTwoName}
       />
     </View>
