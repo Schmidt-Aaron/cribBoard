@@ -9,13 +9,14 @@ export default class App extends Component {
     super(props);
     this.state = {
       players: 2,
+      activeGame: true,
       playerOneName: "Player One",
-      playerOneCurrPoints: 45,
-      playerOnePrevPoints: 41,
+      playerOneCurrPoints: 0,
+      playerOnePrevPoints: 0,
       playerOnehistory: [],
       playerTwoName: "Player Two",
-      playerTwoCurrPoints: 66,
-      playerTwoPrevPoints: 60,
+      playerTwoCurrPoints: 0,
+      playerTwoPrevPoints: 0,
       playerTwohistory: [],
       playerThreeName: "Player Three",
       playerThreeCurrPoints: 0,
@@ -40,12 +41,11 @@ export default class App extends Component {
     let prevStateString = `player${playerNum}PrevPoints`;
     let currPoints = this.state[currStateString];
     let prevPoints = this.state[prevStateString];
-    console.log(currStateString, currPoints);
-    console.log("update score");
     this.setState({
       [currStateString]: (currPoints += points)
     });
   }
+
   render() {
     return (
       <View style={styles.container}>

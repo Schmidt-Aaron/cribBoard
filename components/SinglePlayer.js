@@ -9,7 +9,7 @@ const SinglePlayer = props => {
         <Text style={styles.playerName}>{props.name}</Text>
       </View>
       <View style={styles.scores}>
-        <Text style={styles.points}>{props.points || "Points"}</Text>
+        <Text style={styles.points}>{props.points || 0}</Text>
         <Text>{props.prevPoints || "Previous Score not available"}</Text>
       </View>
       <View style={styles.playerMenu}>
