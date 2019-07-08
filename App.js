@@ -9,24 +9,17 @@ export default class App extends Component {
     super(props);
     this.state = {
       players: 2,
+      playerArr: ["One", "Two"],
       activeGame: true,
       currentPlayer: "",
       pointRange: [],
       playerOneName: "Player One",
-      playerOneCurrPoints: 0,
-      playerOnePrevPoints: 0,
       playerOneHistory: [0],
       playerTwoName: "Player Two",
-      playerTwoCurrPoints: 0,
-      playerTwoPrevPoints: 0,
       playerTwoHistory: [0],
       playerThreeName: "Player Three",
-      playerThreeCurrPoints: 0,
-      playerThreePrevPoints: 0,
       playerThreeHistory: [0],
       playerFourName: "Player Four",
-      playerFourCurrPoints: 0,
-      playerFourPrevPoints: 0,
       playerFourHistory: [0]
     };
 
@@ -36,6 +29,7 @@ export default class App extends Component {
     this.selectPlayerTwo = this.selectPlayerTwo.bind(this);
     this.undoSelect = this.undoSelect.bind(this);
     this.makeRange = this.makeRange.bind(this);
+    this.undoLastScore = this.undoLastScore.bind(this);
   }
 
   /*
@@ -131,11 +125,22 @@ export default class App extends Component {
     console.log(this.state.range);
   }
 
+  undoLastScore(player) {
+    let string = `player${player}History`;
+    console.log(string);
+    let playerHistory = this.state[string];
+    playerHistory.pop();
+    console.log(playerHistory);
+    this.setState({
+      [string]: playerHistory
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Title resetGame={this.resetGame} />
-        <Players {...this.state} />
+        <Players {...this.state} undoLastScore={this.undoLastScore} />
         <Menu
           {...this.state}
           updateScore={this.updateScore}

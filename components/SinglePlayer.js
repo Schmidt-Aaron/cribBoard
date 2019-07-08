@@ -20,8 +20,6 @@ const SinglePlayer = props => {
     return sum;
   };
 
-  console.log(`prev: ${previousScore(props.points)}`);
-
   return (
     <View style={styles.container}>
       <View style={styles.playerNameContainer}>
@@ -35,7 +33,7 @@ const SinglePlayer = props => {
         <Button
           title="Undo"
           onPress={() => {
-            this.props.updateScore;
+            props.undo(props.player);
           }}
           accessibilityLabel="Undo the last score"
           style={styles.menuButton}
