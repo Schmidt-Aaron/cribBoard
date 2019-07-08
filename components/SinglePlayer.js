@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 // Single player component
 const SinglePlayer = props => {
@@ -22,8 +22,16 @@ const SinglePlayer = props => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.playerNameContainer}>
+      {/* <View style={styles.playerNameContainer}>
         <Text style={styles.playerName}>{props.name}</Text>
+      </View> */}
+      <View style={styles.playerNameContainer}>
+        <TextInput
+          style={styles.playerName}
+          onSubmitEditing={text => props.changeName(props.player, text)}
+          value={props.name}
+        />
+        {/* <Text style={styles.playerName}>{props.name}</Text> */}
       </View>
       <View style={styles.scores}>
         <Text style={styles.points}>{currentPoints(props.points)}</Text>

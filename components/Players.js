@@ -6,17 +6,6 @@ import SinglePlayer from "./SinglePlayer";
 const Players = props => {
   return (
     <View style={styles.container}>
-      {/* <SinglePlayer
-        // points={props.playerOneCurrPoints}
-        points={props.playerOneHistory}
-        name={props.playerOneName}
-        undo={props.undoLastScore}
-      />
-      <SinglePlayer
-        // points={props.playerTwoCurrPoints}
-        points={props.playerTwoHistory}
-        name={props.playerTwoName}
-      /> */}
       {props.playerArr.map(string => {
         return (
           <SinglePlayer
@@ -25,6 +14,7 @@ const Players = props => {
             name={props[`player${string}Name`]}
             player={string}
             undo={props.undoLastScore}
+            changeName={props.changeName}
           />
         );
       })}

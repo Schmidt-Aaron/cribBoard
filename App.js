@@ -30,36 +30,16 @@ export default class App extends Component {
     this.undoSelect = this.undoSelect.bind(this);
     this.makeRange = this.makeRange.bind(this);
     this.undoLastScore = this.undoLastScore.bind(this);
+    this.changeName = this.changeName.bind(this);
   }
 
-  /*
-   * update player scores
-   * @ player = One, Two, Three, Four
-   * @ number = 1 - 29 (not 19)
-   * TODO: error handling for player #
-   */
-  // updateScore(player, points) {
-  //   let currStateString = `player${player}CurrPoints`;
-  //   let prevStateString = `player${player}PrevPoints`;
-  //   let currPoints = this.state[currStateString];
-  //   let prevPoints = this.state[prevStateString];
-  //   if (this.state.activeGame === true) {
-  //     if (currPoints + points > 121) {
-  //       this.setState({
-  //         [currStateString]: 121,
-  //         activeGame: false,
-  //         currentPlayer: "",
-  //         pointRange: []
-  //       });
-  //     } else {
-  //       this.setState({
-  //         [currStateString]: (currPoints += points),
-  //         currentPlayer: "",
-  //         pointRange: []
-  //       });
-  //     }
-  //   }
-  // }
+  changeName(player, name) {
+    let string = `player${player}Name`;
+    this.setState({
+      [string]: name
+    });
+  }
+
   updateScore(player, points) {
     let updateString = `player${player}History`;
     console.log(this.state[updateString]);
@@ -132,7 +112,11 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Title resetGame={this.resetGame} />
-        <Players {...this.state} undoLastScore={this.undoLastScore} />
+        <Players
+          {...this.state}
+          undoLastScore={this.undoLastScore}
+          changeName={this.changeName}
+        />
         <Menu
           {...this.state}
           updateScore={this.updateScore}
