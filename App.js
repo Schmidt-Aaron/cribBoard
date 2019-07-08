@@ -76,18 +76,10 @@ export default class App extends Component {
       activeGame: true,
       pointRange: [],
       currentPlayer: "",
-      playerOneCurrPoints: 0,
-      playerOnePrevPoints: 0,
-      playerOnehistory: [],
-      playerTwoCurrPoints: 0,
-      playerTwoPrevPoints: 0,
-      playerTwohistory: [],
-      playerThreeCurrPoints: 0,
-      playerThreePrevPoints: 0,
-      playerThreehistory: [],
-      playerFourCurrPoints: 0,
-      playerFourPrevPoints: 0,
-      playerFourhistory: []
+      playerOneHistory: [],
+      playerTwoHistory: [],
+      playerThreeHistory: [],
+      playerFourHistory: []
     });
   }
 
