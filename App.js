@@ -40,6 +40,10 @@ export default class App extends Component {
     });
   }
 
+  currentPoints(arr) {
+    return arr.reduce((a, b) => a + b, 0);
+  };
+
   updateScore(player, points) {
     let updateString = `player${player}History`;
     console.log(this.state[updateString]);
@@ -86,13 +90,14 @@ export default class App extends Component {
     console.log("undo selected");
   }
 
-  makeRange(start, end) {
+  makeRange(start, end, player) {
     let range = [];
     for (let n = start; n <= end; n++) {
       range.push(n);
     }
     this.setState({
-      pointRange: range
+      pointRange: range,
+      currentPlayer: player
     });
     console.log(this.state.range);
   }

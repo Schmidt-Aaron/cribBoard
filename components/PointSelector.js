@@ -9,7 +9,7 @@ const PointSelector = props => {
           style={styles.playerSelectArea}
           onPress={props.selectPlayerOne}
         >
-          <Text>Select Player One</Text>
+          <Text>{props.playerOneName}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.playerSelectArea}
@@ -21,25 +21,43 @@ const PointSelector = props => {
           style={styles.playerSelectArea}
           onPress={props.selectPlayerTwo}
         >
-          <Text>Select Player Two </Text>
+          <Text>{props.playerTwoName}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.pointSelectContainer}>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(1, 10)}
+          onPress={() => props.makeRange(1, 10, 'One')}
         >
           <Text>1-10</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(11, 20)}
+          onPress={() => props.makeRange(11, 20, 'One')}
         >
           <Text>11-20</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(21, 29)}
+          onPress={() => props.makeRange(21, 29, 'One')}
+        >
+          <Text>21-29</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.pointRange}
+          onPress={() => props.makeRange(1, 10, 'Two')}
+        >
+          <Text>1-10</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.pointRange}
+          onPress={() => props.makeRange(11, 20, 'Two')}
+        >
+          <Text>11-20</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.pointRange}
+          onPress={() => props.makeRange(21, 29, 'Two')}
         >
           <Text>21-29</Text>
         </TouchableOpacity>

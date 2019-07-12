@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 // Single player component
 const SinglePlayer = props => {
-  console.log(props.points);
 
   const currentPoints = arr => {
     return arr.reduce((a, b) => a + b, 0);
@@ -22,16 +21,13 @@ const SinglePlayer = props => {
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.playerNameContainer}>
-        <Text style={styles.playerName}>{props.name}</Text>
-      </View> */}
       <View style={styles.playerNameContainer}>
         <TextInput
           style={styles.playerName}
-          onSubmitEditing={text => props.changeName(props.player, text)}
+          // onSubmitEditing={text => props.changeName(props.player, text)}
+          onChangeText={text => props.changeName(props.player, text)}
           value={props.name}
         />
-        {/* <Text style={styles.playerName}>{props.name}</Text> */}
       </View>
       <View style={styles.scores}>
         <Text style={styles.points}>{currentPoints(props.points)}</Text>
@@ -60,11 +56,8 @@ const SinglePlayer = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
-    backgroundColor: "#fff",
-    // alignItems: "center",
+    width: 200,
     justifyContent: "center",
-    borderBottomWidth: 1
   },
   playerName: {
     marginTop: 20,
@@ -77,7 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   points: {
-    fontSize: 120,
+    fontSize: 30,
     textAlign: "center"
   },
   playerMenu: {
