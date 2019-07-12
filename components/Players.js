@@ -14,12 +14,12 @@ const Players = props => {
       {props.playerArr.map(string => {
         return (
           <SinglePlayer
-          key={string}
-          points={props[`player${string}History`]}
-          name={props[`player${string}Name`]}
-          player={string}
-          undo={props.undoLastScore}
-          changeName={props.changeName}
+            key={string}
+            points={props[`player${string}History`]}
+            name={props[`player${string}Name`]}
+            player={string}
+            undo={props.undoLastScore}
+            changeName={props.changeName}
           />
           );
         })}

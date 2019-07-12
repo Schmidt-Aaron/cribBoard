@@ -31,7 +31,7 @@ const SinglePlayer = props => {
       </View>
       <View style={styles.scores}>
         <Text style={styles.points}>{currentPoints(props.points)}</Text>
-        <Text>{previousScore(props.points)}</Text>
+        <Text>({previousScore(props.points)})</Text>
       </View>
       <View style={styles.playerMenu}>
         <Button
@@ -40,14 +40,13 @@ const SinglePlayer = props => {
             props.undo(props.player);
           }}
           accessibilityLabel="Undo the last score"
-          style={styles.menuButton}
         />
-        <Button
+        {/* <Button
           onPress={() => {}}
           title="History"
           accessibilityLabel="See the scoring history for this player"
           style={styles.menuButton}
-        />
+        /> */}
       </View>
     </View>
   );
@@ -56,33 +55,44 @@ const SinglePlayer = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: 200,
+    width: 120,
+    height: 120,
     justifyContent: "center",
+    backgroundColor:'rgba(52, 52, 52, 0.6)',
+    borderRadius: 15,
+    borderColor: 'black',
+    borderWidth: 1,
+    padding:10,
+    marginTop:5,
+    marginBottom:5,
+    marginLeft:10,
+    // borderBottomWidth:1,
+    // borderTopWidth:1,
+    // borderLeftWidth: 1,
+    // borderRightWidth: 1,
   },
   playerName: {
-    marginTop: 20,
     fontSize: 18,
     textAlign: "center"
   },
   scores: {
     flex: 8,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    flexDirection: 'row'
   },
   points: {
     fontSize: 30,
-    textAlign: "center"
+    textAlign: "center",
+    marginRight: 10
   },
   playerMenu: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    margin: 10
+    marginBottom: 10
   },
-  menuButton: {
-    width: "50%"
-  }
 });
 
 export default SinglePlayer;
