@@ -124,13 +124,18 @@ export default class App extends Component {
   }
 
   undoLastScore(player) {
-    let string = `player${player}History`;
-    let playerHistory = this.state[string];
-    playerHistory.pop();
-    console.log(playerHistory);
-    this.setState({
-      [string]: playerHistory
-    });
+    if(this.state.activeGame === true) {
+      let historyString = `player${player}History`;
+      let playerHistory = this.state[historyString];
+      let scoreString = `player${player}Score`;
+      playerHistory.pop();
+      console.log(playerHistory);
+      let newScore = this.currentPoints(playerHistory)
+      this.setState({
+        [historyString]: playerHistory,
+        [scoreString]: newScore
+      });
+    }
   }
 
   render() {
