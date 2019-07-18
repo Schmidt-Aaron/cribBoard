@@ -30,8 +30,8 @@ const SinglePlayer = props => {
         />
       </View>
       <View style={styles.scores}>
-        <Text style={styles.points}>{currentPoints(props.points)}</Text>
-        <Text>({previousScore(props.points)})</Text>
+        <Text style={styles.points}>{props.points}</Text>
+        <Text>({previousScore(props.history)})</Text>
       </View>
       <View style={styles.playerMenu}>
         <Button

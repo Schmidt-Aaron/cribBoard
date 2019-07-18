@@ -104,7 +104,9 @@ const styles = StyleSheet.create({
   pointRange: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderColor: 'lightgrey',
+    borderWidth: 1
   },
   pointsContainer: {
     flex: 1,
@@ -114,6 +116,8 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   point: {
+    borderColor: 'lightgrey',
+    borderWidth: 1,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

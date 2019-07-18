@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { AppRegistry, StyleSheet, View } from "react-native";
+import { AppRegistry, StyleSheet, View, ImageBackground } from "react-native";
 import Title from "./components/Title";
 import Players from "./components/Players";
 import Menu from "./components/Menu";
+import background from "./assets/wood-board.jpg"
+
 
 export default class App extends Component {
   constructor(props) {
@@ -14,13 +16,17 @@ export default class App extends Component {
       currentPlayer: "",
       pointRange: [],
       playerOneName: "Player One",
-      playerOneHistory: [0],
       playerTwoName: "Player Two",
-      playerTwoHistory: [0],
       playerThreeName: "Player Three",
-      playerThreeHistory: [0],
       playerFourName: "Player Four",
-      playerFourHistory: [0]
+      playerOneScore: 0,
+      playerTwoScore: 0,
+      playerThreeScore: 0,
+      playerFourScore: 0,
+      playerOneHistory: [0],
+      playerTwoHistory: [0],
+      playerThreeHistory: [0],
+      playerFourHistory: [0],
     };
 
     this.updateScore = this.updateScore.bind(this);
@@ -45,14 +51,28 @@ export default class App extends Component {
   };
 
   updateScore(player, points) {
-    let updateString = `player${player}History`;
-    console.log(this.state[updateString]);
-    let tempArr = this.state[updateString];
-    tempArr.push(points);
-    console.log(tempArr);
-    this.setState({
-      [updateString]: tempArr
-    });
+    if(this.state.activeGame === true) {
+      let historyString = `player${player}History`;
+      let scoreString = `player${player}Score`;
+      let tempArr = this.state[historyString];
+      tempArr.push(points);
+      let tempPoints = this.currentPoints(tempArr);
+      if(tempPoints >= 121) {
+        tempPoints = 121;
+        this.setState({
+          [historyString]: tempArr,
+          [scoreString]: tempPoints,
+          activeGame: false
+        });
+      }
+      if(tempPoints < 121) {
+        this.setState({
+          [historyString]: tempArr,
+          [scoreString]: tempPoints,
+        });
+  
+      }
+    }
   }
 
   resetGame() {
@@ -60,6 +80,10 @@ export default class App extends Component {
       activeGame: true,
       pointRange: [],
       currentPlayer: "",
+      playerOneScore: 0,
+      playerTwoScore: 0,
+      playerThreeScore: 0,
+      playerFourScore: 0,
       playerOneHistory: [],
       playerTwoHistory: [],
       playerThreeHistory: [],
@@ -84,10 +108,8 @@ export default class App extends Component {
   undoSelect() {
     this.setState({
       currentPlayer: "",
-      points: 0,
-      pointRange: []
+      pointRange: [],
     });
-    console.log("undo selected");
   }
 
   makeRange(start, end, player) {
@@ -99,12 +121,10 @@ export default class App extends Component {
       pointRange: range,
       currentPlayer: player
     });
-    console.log(this.state.range);
   }
 
   undoLastScore(player) {
     let string = `player${player}History`;
-    console.log(string);
     let playerHistory = this.state[string];
     playerHistory.pop();
     console.log(playerHistory);
@@ -116,21 +136,27 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Title resetGame={this.resetGame} />
-        <Players
-          {...this.state}
-          undoLastScore={this.undoLastScore}
-          changeName={this.changeName}
-        />
-        <Menu
-          {...this.state}
-          updateScore={this.updateScore}
-          resetGame={this.resetGame}
-          selectPlayerOne={this.selectPlayerOne}
-          selectPlayerTwo={this.selectPlayerTwo}
-          undoSelect={this.undoSelect}
-          makeRange={this.makeRange}
-        />
+        <ImageBackground
+          source={background}
+        style={styles.background}
+        >
+          <Title resetGame={this.resetGame} />
+          <Players
+            {...this.state}
+            undoLastScore={this.undoLastScore}
+            changeName={this.changeName}
+          />
+          <Menu
+            {...this.state}
+            updateScore={this.updateScore}
+            resetGame={this.resetGame}
+            selectPlayerOne={this.selectPlayerOne}
+            selectPlayerTwo={this.selectPlayerTwo}
+            undoSelect={this.undoSelect}
+            makeRange={this.makeRange}
+          />
+
+        </ImageBackground>
       </View>
     );
   }
@@ -139,9 +165,11 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
-    // alignItems: "center",
-    // justifyContent: "center"
+    // backgroundColor: "#fff"
+  },
+  background: {
+    height:  '100%',
+    width:'100%'
   }
 });
 // ?

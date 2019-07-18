@@ -12,7 +12,7 @@ const Menu = props => {
 
 const styles = StyleSheet.create({
   menu: {
-    backgroundColor: "azure",
+    backgroundColor: "rgba(110,110,110,0.8)",
     flex: 2,
     alignItems: "center",
     justifyContent: "center"

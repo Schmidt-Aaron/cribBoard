@@ -64,5 +64,14 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     justifyContent: 'center',
     alignContent: 'center'
+  },
+  modalButton:{
+    position: "absolute",
+    height: 50,
+    width: 50,
+    top: 50,
+    right: 50,
+    backgroundColor: 'red'
+
   }
 })
