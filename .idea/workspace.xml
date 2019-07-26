@@ -4,17 +4,8 @@
     <list default="true" id="88d64634-ee52-4e4d-bbb5-42bb0714c47f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/antique-backdrop1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/antique-backdrop2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/antique-background-brown.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/architecture-bricks-building.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bark-close-up-crack.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bricks-cement-concrete.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/OptionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/OptionsModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Players.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Players.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/PointSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/PointSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Title.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +17,11 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.json">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -34,9 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="1107" />
-    <option name="y" value="221" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="404" />
+    <option name="y" value="32" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -45,17 +40,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="cribBoard" type="1abcf292:AndroidViewProjectNode" />
+              <item name="cribboard" type="1abcf292:AndroidViewProjectNode" />
               <item name="cribBoard" type="e9137016:NonAndroidModuleNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -67,8 +64,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -102,11 +97,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1107" y="221" width="1400" height="1000" extended-state="0" />
+    <frame x="404" y="32" width="1400" height="1000" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33507463" />
-      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49741825" visible="true" weight="0.33507463" />
+      <window_info active="true" id="Structure" order="2" sideWeight="0.5025818" side_tool="true" visible="true" weight="0.33507463" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
@@ -117,18 +112,22 @@
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" visible="true" weight="0.3298731" />
       <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
-      <window_info anchor="right" id="Assistant" visible="true" weight="0.32985073" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Assistant" order="4" weight="0.32910448" />
     </layout>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.json">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
