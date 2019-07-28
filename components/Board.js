@@ -16,7 +16,6 @@ const Hole = props => {
 const PointRow = props => {
   let start = props.start || 1; // temp
   let finish = props.finish || 40; // temp
-  let player = props.player || "One";
   let firstRow = null;
   let rowArray = [];
 
@@ -122,6 +121,7 @@ const styles = StyleSheet.create({
   // start hole styles
   playerRow: {
     flex: 1,
+    height: 50,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"

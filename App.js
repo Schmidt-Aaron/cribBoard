@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, View, ImageBackground } from "react-native";
 import Title from "./components/Title";
-import Players from "./components/Players";
 import Menu from "./components/Menu";
 import Desk from "./components/Desk";
 import background from "./assets/wood-board.jpg";
