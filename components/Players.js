@@ -17,23 +17,23 @@ const Players = props => {
             undo={props.undoLastScore}
             changeName={props.changeName}
           />
-          );
-        })}
+        );
+      })}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 7,
+    flex: 2, // change to 4 for 3-4 players
     backgroundColor: "rgba(0,0,0,0.3)",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center"
     // flexDirection: "row" // column for horizontal screens
   },
   background: {
-    height:  '100%',
-    width:'100%'
+    height: "100%",
+    width: "100%"
   }
 });
 

@@ -3,8 +3,8 @@ import { AppRegistry, StyleSheet, View, ImageBackground } from "react-native";
 import Title from "./components/Title";
 import Players from "./components/Players";
 import Menu from "./components/Menu";
-import background from "./assets/wood-board.jpg"
-
+import Desk from "./components/Desk";
+import background from "./assets/wood-board.jpg";
 
 export default class App extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class App extends Component {
       playerOneHistory: [0],
       playerTwoHistory: [0],
       playerThreeHistory: [0],
-      playerFourHistory: [0],
+      playerFourHistory: [0]
     };
 
     this.updateScore = this.updateScore.bind(this);
@@ -48,16 +48,16 @@ export default class App extends Component {
 
   currentPoints(arr) {
     return arr.reduce((a, b) => a + b, 0);
-  };
+  }
 
   updateScore(player, points) {
-    if(this.state.activeGame === true) {
+    if (this.state.activeGame === true) {
       let historyString = `player${player}History`;
       let scoreString = `player${player}Score`;
       let tempArr = this.state[historyString];
       tempArr.push(points);
       let tempPoints = this.currentPoints(tempArr);
-      if(tempPoints >= 121) {
+      if (tempPoints >= 121) {
         tempPoints = 121;
         this.setState({
           [historyString]: tempArr,
@@ -65,12 +65,11 @@ export default class App extends Component {
           activeGame: false
         });
       }
-      if(tempPoints < 121) {
+      if (tempPoints < 121) {
         this.setState({
           [historyString]: tempArr,
-          [scoreString]: tempPoints,
+          [scoreString]: tempPoints
         });
-  
       }
     }
   }
@@ -108,7 +107,7 @@ export default class App extends Component {
   undoSelect() {
     this.setState({
       currentPlayer: "",
-      pointRange: [],
+      pointRange: []
     });
   }
 
@@ -124,13 +123,13 @@ export default class App extends Component {
   }
 
   undoLastScore(player) {
-    if(this.state.activeGame === true) {
+    if (this.state.activeGame === true) {
       let historyString = `player${player}History`;
       let playerHistory = this.state[historyString];
       let scoreString = `player${player}Score`;
       playerHistory.pop();
       console.log(playerHistory);
-      let newScore = this.currentPoints(playerHistory)
+      let newScore = this.currentPoints(playerHistory);
       this.setState({
         [historyString]: playerHistory,
         [scoreString]: newScore
@@ -141,15 +140,13 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={background}
-        style={styles.background}
-        >
+        <ImageBackground source={background} style={styles.background}>
           <Title resetGame={this.resetGame} />
-          <Players
+
+          <Desk
             {...this.state}
-            undoLastScore={this.undoLastScore}
             changeName={this.changeName}
+            undoLastScore={this.undoLastScore}
           />
           <Menu
             {...this.state}
@@ -160,7 +157,6 @@ export default class App extends Component {
             undoSelect={this.undoSelect}
             makeRange={this.makeRange}
           />
-
         </ImageBackground>
       </View>
     );
@@ -169,12 +165,12 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
     // backgroundColor: "#fff"
   },
   background: {
-    height:  '100%',
-    width:'100%'
+    height: "100%",
+    width: "100%"
   }
 });
 // ?
