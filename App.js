@@ -9,7 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: 2,
+      players: 2, // does this do anything???
       playerArr: ["One", "Two"],
       activeGame: true,
       currentPlayer: "",
@@ -36,7 +36,29 @@ export default class App extends Component {
     this.makeRange = this.makeRange.bind(this);
     this.undoLastScore = this.undoLastScore.bind(this);
     this.changeName = this.changeName.bind(this);
+    this.changeNumberOfPlayers = this.changeNumberOfPlayers.bind(this);
   }
+
+  // change # of players
+  changeNumberOfPlayers(number) {
+    if (number === 2) {
+      this.setState({
+        playerArr: ["One", "Two"]
+      });
+    }
+    if (number === 3) {
+      this.setState({
+        playerArr: ["One", "Two", "Three"]
+      });
+    }
+    if (number === 4) {
+      this.setState({
+        playerArr: ["One", "Two", "Three", "Four"]
+      });
+    }
+  }
+  // change game length
+  // change peg color
 
   changeName(player, name) {
     let string = `player${player}Name`;
@@ -140,7 +162,12 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={background} style={styles.background}>
-          <Title resetGame={this.resetGame} />
+          <Title
+            resetGame={this.resetGame}
+            {...this.state}
+            changeNumberOfPlayers={this.changeNumberOfPlayers}
+            changeName={this.changeName}
+          />
 
           <Desk
             {...this.state}

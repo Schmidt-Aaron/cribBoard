@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import OptionsModal from './OptionsModal'
+import OptionsModal from "./OptionsModal";
 
 const Title = props => {
   return (
@@ -9,7 +9,7 @@ const Title = props => {
       <TouchableOpacity style={styles.resetButton} onPress={props.resetGame}>
         <Text>Reset</Text>
       </TouchableOpacity>
-      <OptionsModal />
+      <OptionsModal {...props} />
     </View>
   );
 };
