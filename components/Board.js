@@ -29,9 +29,9 @@ const PointRow = props => {
     <View style={styles.playerRow}>
       <View style={styles.spacer}>
         {props.firstRow ? (
-          <Text style={styles.startHole}>.</Text>
+          <Hole/>
         ) : (
-          <Text style={styles.startHole}> </Text>
+          <View style={styles.startHole}></View>
         )}
       </View>
       {rowArray}
@@ -46,7 +46,7 @@ const Board = props => {
     <View style={styles.container}>
       <View style={styles.boardContainer}>
         <View style={styles.topRow}>
-          <View style={styles.playerRowContainer}>
+          {/* <View style={styles.playerRowContainer}> */}
             {players.map(player => (
               <PointRow
                 key={player}
@@ -56,7 +56,7 @@ const Board = props => {
                 firstRow={true}
               />
             ))}
-          </View>
+          {/* </View> */}
         </View>
         <View style={styles.middleRow}>
           {players.map(player => (
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   },
   topRow: {
     flex: 1,
+    height: "100%",
     justifyContent: "flex-end",
     alignItems: "flex-end"
   },
@@ -110,13 +111,13 @@ const styles = StyleSheet.create({
   },
   bottomRow: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "flex-start",
+    alignItems: "flex-start"
   },
   playerRowContainer: {
-    alignSelf: "flex-end",
-    width: "100%",
-    height: "25%"
+    // alignSelf: "flex-end",
+    // width: 1000,
+    height: 25
   },
   // start hole styles
   playerRow: {
@@ -145,7 +146,9 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   pointRow: {
-    flex: 1
+    flex: 1,
+    flexShrink:100,
+    width:'100%',
   },
   spacer: {
     flex: 3,
