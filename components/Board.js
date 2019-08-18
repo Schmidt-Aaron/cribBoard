@@ -13,6 +13,18 @@ const Hole = props => {
   );
 };
 
+const startingHole = props => {
+  return (
+    <View
+      player={props.player}
+      point={props.point}
+      style={styles.holeContainer}
+    >
+      <View style={styles.hole} />
+    </View>
+  );
+};
+
 const PointRow = props => {
   let start = props.start || 1; // temp
   let finish = props.finish || 40; // temp
@@ -27,59 +39,104 @@ const PointRow = props => {
 
   return (
     <View style={styles.playerRow}>
-      <View style={styles.spacer}>
-        {props.firstRow ? (
-          <Hole/>
-        ) : (
-          <View style={styles.startHole}></View>
-        )}
-      </View>
       {rowArray}
-      <View style={styles.spacer} />
     </View>
   );
 };
 
+// fairly complex layout; perhaps find a way to componentize the individual pieces??
 const Board = props => {
   const players = ["One", "Two"];
   return (
     <View style={styles.container}>
+      {/* contains the entire crib board */}
       <View style={styles.boardContainer}>
-        <View style={styles.topRow}>
-          {/* <View style={styles.playerRowContainer}> */}
-            {players.map(player => (
-              <PointRow
+        
+        {/*  one of three rows of the board (for 121 pt game) */}
+        <View style={styles.topRowContainer}>
+
+          {/* container for the individual rows; contains two spacer elements + a player rows element; flexDirection row */}
+          <View style={styles.row}>
+            
+            {/* spacer used for starting / final pegs / misc */}
+            <View style={styles.rowSpacer} />
+            
+            {/* houses all the point row elements; flexdirection: column */}
+            <View style={styles.pointRowsContainer}>
+            
+              {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
+              {players.map(player => (
+                <PointRow
                 key={player}
                 player={player}
                 start={1}
                 finish={40}
                 firstRow={true}
+                />
+                ))}
+
+            </View>
+            <View style={styles.rowSpacer} />
+          </View>
+        </View>
+
+        {/*  one of three rows of the board (for 121 pt game) */}
+        <View style={styles.middleRowContainer}>
+
+          {/* container for the individual rows; contains two spacer elements + a player rows element; flexDirection row */}
+          <View style={styles.row}>
+            
+            {/* spacer used for starting / final pegs / misc */}
+            <View style={styles.rowSpacer} />
+            
+            {/* houses all the point row elements; flexdirection: column */}
+            <View style={styles.pointRowsContainer}>
+            
+              {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
+              {players.map(player => (
+                <PointRow
+                key={player}
+                player={player}
+                start={41}
+                finish={80}
+                firstRow={false}
+                />
+              ))}
+
+            </View>
+            <View style={styles.rowSpacer} />
+          </View>
+        </View>
+        {/*  one of three rows of the board (for 121 pt game) */}
+        <View style={styles.bottomRowContainer}>
+
+          {/* container for the individual rows; contains two spacer elements + a player rows element; flexDirection row */}
+          <View style={styles.row}>
+            
+            {/* spacer used for starting / final pegs / misc */}
+            <View style={styles.rowSpacer} />
+            
+            {/* houses all the point row elements; flexdirection: column */}
+            <View style={styles.pointRowsContainer}>
+            
+              {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
+              {players.map(player => (
+                <PointRow
+                key={player}
+                player={player}
+                start={81}
+                finish={120}
+                firstRow={false}
               />
-            ))}
-          {/* </View> */}
+                ))}
+
+            </View>
+            <View style={styles.rowSpacer} />
+          </View>
         </View>
-        <View style={styles.middleRow}>
-          {players.map(player => (
-            <PointRow
-              key={player}
-              player={player}
-              start={41}
-              finish={80}
-              firstRow={false}
-            />
-          ))}
-        </View>
-        <View style={styles.bottomRow}>
-          {players.map(player => (
-            <PointRow
-              key={player}
-              player={player}
-              start={81}
-              finish={120}
-              firstRow={false}
-            />
-          ))}
-        </View>
+
+
+        
       </View>
     </View>
   );
@@ -96,30 +153,49 @@ const styles = StyleSheet.create({
     maxHeight: "80%",
     maxWidth: "80%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "black" // for layout development; delete later
   },
-  topRow: {
+  topRowContainer: {
     flex: 1,
-    height: "100%",
-    justifyContent: "flex-end",
-    alignItems: "flex-end"
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "black", // for layout development; delete later
+    justifyContent: "flex-end"
   },
-  middleRow: {
+  middleRowContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "black", // for layout development; delete later
+    justifyContent: "center"
   },
-  bottomRow: {
+  bottomRowContainer: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "flex-start"
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "black", // for layout development; delete later
+    justifyContent: "flex-start"
   },
-  playerRowContainer: {
-    // alignSelf: "flex-end",
-    // width: 1000,
-    height: 25
+  // row elements 
+  row: {
+    display: "flex",
+    flexBasis: "70%", // controls the player row element height
+    flexDirection:"row",
+    alignSelf:"center",
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "blue" // for layout development; delete later
   },
-  // start hole styles
+  // inside each row we have | rowSpacer | pointRowsContainer | rowSpacer |
+  rowSpacer: {
+    flex: 1, // 5%
+    borderWidth: 0.2, // for layout development; delete later
+    borderColor: "white" // for layout development; delete later
+  },
+  pointRowsContainer: {
+    flex: 18, // 90%
+    flexDirection:"column",
+
+  },
+  // start player row styles
   playerRow: {
     flex: 1,
     height: 50,
@@ -145,18 +221,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "black"
   },
-  pointRow: {
-    flex: 1,
-    flexShrink:100,
-    width:'100%',
-  },
-  spacer: {
-    flex: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "black"
-  }
+
 });
 
 export default Board;

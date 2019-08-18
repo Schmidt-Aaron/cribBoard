@@ -9,7 +9,8 @@ const Title = props => {
       <TouchableOpacity style={styles.resetButton} onPress={props.resetGame}>
         <Text>Reset</Text>
       </TouchableOpacity>
-      <OptionsModal {...props} />
+      {/* options modal currently broken; comitted code mid-way through so I could move machines; fix later!! */}
+      {/* <OptionsModal {...props} /> */}
     </View>
   );
 };

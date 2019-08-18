@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="88d64634-ee52-4e4d-bbb5-42bb0714c47f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Board.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +28,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="1185" />
-    <option name="y" value="58" />
+    <option name="x" value="-48" />
+    <option name="y" value="62" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -85,7 +86,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1185" y="58" width="1400" height="1000" extended-state="1" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49225473" visible="true" weight="0.33507463" />
