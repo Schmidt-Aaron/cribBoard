@@ -43,7 +43,6 @@ const RowOfPegs = props => {
   let finish = props.finish || 40; // temp
   let spacerNum = 1; // used as a key value for our spacers
   let firstRow = null; // toggle for row specific holes
-  let finalRow = null; // toggle for row specific holes
   let rowArray = [];
 
   for (let i = start; i <= finish; i++) {
@@ -81,8 +80,15 @@ const Board = props => {
           <View style={styles.row}>
             
             {/* spacer used for starting / final pegs / misc */}
-            <View style={styles.rowSpacer} />
-            
+            <View style={styles.rowSpacer} >
+              {players.map(player => (
+                <Hole 
+                  key={player}
+                  player={player}
+                  point={0}
+                />
+              ))}
+              </View>
             {/* houses all the point row elements; flexdirection: column */}
             <View style={styles.pointRowsContainer}>
             
@@ -94,7 +100,6 @@ const Board = props => {
                 start={1}
                 finish={40}
                 firstRow={true}
-                finalRow={false}
                 />
                 ))}
 
@@ -123,7 +128,6 @@ const Board = props => {
                 start={41}
                 finish={80}
                 firstRow={false}
-                finalRow={false}
                 />
               ))}
 
@@ -151,12 +155,16 @@ const Board = props => {
                 start={81}
                 finish={120}
                 firstRow={false}
-                finalRow={true}
               />
                 ))}
 
             </View>
-            <View style={styles.rowSpacer} />
+            <View style={styles.rowSpacer} >
+              {/* final hole goes here */}
+              <Hole 
+                point={121}
+              />
+            </View>
           </View>
         </View>
 
@@ -213,12 +221,14 @@ const styles = StyleSheet.create({
   rowSpacer: {
     flex: 1, // 5%
     borderWidth: 0.2, // for layout development; delete later
-    borderColor: "white" // for layout development; delete later
+    borderColor: "white", // for layout development; delete later
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column"
   },
   pointRowsContainer: {
     flex: 18, // 90%
     flexDirection:"column",
-
   },
   // start player row styles
   playerRow: {
@@ -246,7 +256,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "black"
   },
-
+  
 });
 
 export default Board;
