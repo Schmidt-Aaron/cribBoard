@@ -3,13 +3,22 @@ import { View, Text, StyleSheet } from "react-native";
 
 // hole element
 const Hole = props => {
+
   return (
     <View
-      player={props.player}
-      point={props.point}
-      style={styles.holeContainer}
+    player={props.player}
+    point={props.point}
+    style={styles.holeContainer}
     >
-      <View style={styles.hole} />
+
+    {props.active 
+      ? (
+        <View style={[styles.hole, styles.active]} />
+      )
+      : (
+        <View style={styles.hole} />
+      )  
+    }
     </View>
   );
 };
@@ -39,13 +48,20 @@ const startingHole = props => {
 
 // generates a row of pegs
 const RowOfPegs = props => {
+  let playerScore = props.playerScore;
   let start = props.start || 1; // temp
   let finish = props.finish || 40; // temp
   let spacerNum = 1; // used as a key value for our spacers
   let firstRow = null; // toggle for row specific holes
   let rowArray = [];
-
+  let active = false
+  // console.log(playerScore)
   for (let i = start; i <= finish; i++) {
+    if(i === playerScore) {
+      active = true;
+      console.log(`player${props.player}'s score is ${playerScore}`)
+    }
+    if(i !== playerScore) active = false;
     // adds spacers after every 5 holes
     if((i - 1) % 5 === 0 ) {
       rowArray.push(
@@ -54,7 +70,7 @@ const RowOfPegs = props => {
       spacerNum++ // increment our key value 
     }
     rowArray.push(
-      <Hole key={`${props.player}_${i}`} player={props.player} point={i} />
+      <Hole key={`${props.player}_${i}`} player={props.player} point={i} active={active} />
     );
   }
 
@@ -67,7 +83,18 @@ const RowOfPegs = props => {
 
 // fairly complex layout; perhaps find a way to componentize the individual pieces??
 const Board = props => {
+  // console.log(props)
   const players = ["One", "Two"]; // add "Three" and "Four" to add players. use EXACT spelling
+  
+  let winner = false; // controls style on the last peg
+  
+  if( 
+    props.playerOneScore === 121 || 
+    props.playerTwoScore === 121 || 
+    props.playerThreeScore === 121 || 
+    props.playerFourScore === 121 
+    ) winner = true;
+
   return (
     <View style={styles.container}>
       {/* contains the entire crib board */}
@@ -81,27 +108,40 @@ const Board = props => {
             
             {/* spacer used for starting / final pegs / misc */}
             <View style={styles.rowSpacer} >
-              {players.map(player => (
+              {players.map(player => {
+                let active = false;
+                if(player === 'One' && props.playerOneScore === 0) active = true
+                if(player === 'Two' && props.playerTwoScore === 0) active = true
+                if(player === 'Three' && props.playerThreeScore === 0) active = true
+                if(player === 'Four' && props.playerFourScore === 0) active = true
+                return (
                 <Hole 
+                  active={active}
                   key={player}
                   player={player}
                   point={0}
                 />
-              ))}
+              )})}
               </View>
             {/* houses all the point row elements; flexdirection: column */}
             <View style={styles.pointRowsContainer}>
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
-              {players.map(player => (
+              {players.map(player => {
+                let score = 0
+                if(player === "One") score = props.playerOneScore 
+                if(player === "Two") score = props.playerTwoScore 
+                if(player === "Three") score = props.playerThreeScore 
+                if(player === "Four") score = props.playerFourScore 
+                return (
                 <RowOfPegs
-                key={player}
-                player={player}
-                start={1}
-                finish={40}
-                firstRow={true}
+                  playerScore = {score}
+                  key={player}
+                  player={player}
+                  start={1}
+                  finish={40}
                 />
-                ))}
+                )})}
 
             </View>
             <View style={styles.rowSpacer} />
@@ -121,15 +161,21 @@ const Board = props => {
             <View style={styles.pointRowsContainer}>
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
-              {players.map(player => (
+              {players.map(player => {
+                let score = 0
+                if(player === "One") score = props.playerOneScore 
+                if(player === "Two") score = props.playerTwoScore 
+                if(player === "Three") score = props.playerThreeScore 
+                if(player === "Four") score = props.playerFourScore 
+                return (
                 <RowOfPegs
-                key={player}
-                player={player}
-                start={41}
-                finish={80}
-                firstRow={false}
+                  playerScore = {score}
+                  key={player}
+                  player={player}
+                  start={41}
+                  finish={80}
                 />
-              ))}
+                )})}
 
             </View>
             <View style={styles.rowSpacer} />
@@ -148,20 +194,28 @@ const Board = props => {
             <View style={styles.pointRowsContainer}>
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
-              {players.map(player => (
+              {players.map(player => {
+                let score = 0
+                if(player === "One") score = props.playerOneScore 
+                if(player === "Two") score = props.playerTwoScore 
+                if(player === "Three") score = props.playerThreeScore 
+                if(player === "Four") score = props.playerFourScore 
+                return (
                 <RowOfPegs
-                key={player}
-                player={player}
-                start={81}
-                finish={120}
-                firstRow={false}
-              />
-                ))}
+                  playerScore = {score}
+                  key={player}
+                  player={player}
+                  start={81}
+                  finish={120}
+                />
+                )})}
 
             </View>
             <View style={styles.rowSpacer} >
               {/* final hole goes here */}
+
               <Hole 
+                active={winner}
                 point={121}
               />
             </View>
@@ -256,6 +310,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "black"
   },
+  active: {
+    borderColor:"red",
+    backgroundColor: "red"
+  }
   
 });
 
