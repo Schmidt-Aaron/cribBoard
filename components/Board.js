@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
+// hole element
 const Hole = props => {
   return (
     <View
@@ -13,6 +14,17 @@ const Hole = props => {
   );
 };
 
+// spacer between sets of 5 holes
+const HoleSpace = () => {
+  return (
+    <View 
+      style={styles.holeContainer}
+    >
+    </View>
+  );
+};
+
+// starting holes
 const startingHole = props => {
   return (
     <View
@@ -25,13 +37,23 @@ const startingHole = props => {
   );
 };
 
-const PointRow = props => {
+// generates a row of pegs
+const RowOfPegs = props => {
   let start = props.start || 1; // temp
   let finish = props.finish || 40; // temp
-  let firstRow = null;
+  let spacerNum = 1; // used as a key value for our spacers
+  let firstRow = null; // toggle for row specific holes
+  let finalRow = null; // toggle for row specific holes
   let rowArray = [];
 
   for (let i = start; i <= finish; i++) {
+    // adds spacers after every 5 holes
+    if((i - 1) % 5 === 0 ) {
+      rowArray.push(
+        <HoleSpace key={`space_${spacerNum}`} />
+      )
+      spacerNum++ // increment our key value 
+    }
     rowArray.push(
       <Hole key={`${props.player}_${i}`} player={props.player} point={i} />
     );
@@ -46,7 +68,7 @@ const PointRow = props => {
 
 // fairly complex layout; perhaps find a way to componentize the individual pieces??
 const Board = props => {
-  const players = ["One", "Two"];
+  const players = ["One", "Two"]; // add "Three" and "Four" to add players. use EXACT spelling
   return (
     <View style={styles.container}>
       {/* contains the entire crib board */}
@@ -66,12 +88,13 @@ const Board = props => {
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => (
-                <PointRow
+                <RowOfPegs
                 key={player}
                 player={player}
                 start={1}
                 finish={40}
                 firstRow={true}
+                finalRow={false}
                 />
                 ))}
 
@@ -94,12 +117,13 @@ const Board = props => {
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => (
-                <PointRow
+                <RowOfPegs
                 key={player}
                 player={player}
                 start={41}
                 finish={80}
                 firstRow={false}
+                finalRow={false}
                 />
               ))}
 
@@ -121,12 +145,13 @@ const Board = props => {
             
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => (
-                <PointRow
+                <RowOfPegs
                 key={player}
                 player={player}
                 start={81}
                 finish={120}
                 firstRow={false}
+                finalRow={true}
               />
                 ))}
 
