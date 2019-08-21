@@ -22,6 +22,18 @@ export default class App extends Component {
       playerTwoScore: 0,
       playerThreeScore: 0,
       playerFourScore: 0,
+      scores: {
+        One: 0,
+        Two: 0,
+        Three: 0,
+        Four: 0
+      },
+      history: {
+        One: [0],
+        Two: [0],
+        Three: [0],
+        Four: [0]
+      },
       playerOneHistory: [0],
       playerTwoHistory: [0],
       playerThreeHistory: [0],
@@ -107,7 +119,19 @@ export default class App extends Component {
       playerOneHistory: [],
       playerTwoHistory: [],
       playerThreeHistory: [],
-      playerFourHistory: []
+      playerFourHistory: [],
+      scores: {
+        One: 0,
+        Two: 0,
+        Three: 0,
+        Four: 0
+      },
+      history: {
+        One: [0],
+        Two: [0],
+        Three: [0],
+        Four: [0]
+      }
     });
   }
 

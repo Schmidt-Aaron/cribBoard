@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 // Single player component
 const SinglePlayer = props => {
-
   const currentPoints = arr => {
     return arr.reduce((a, b) => a + b, 0);
   };
@@ -58,14 +57,14 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     justifyContent: "center",
-    backgroundColor:'rgba(52, 52, 52, 0.6)',
+    backgroundColor: "rgba(52, 52, 52, 0.6)",
     borderRadius: 15,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
-    padding:10,
-    marginTop:5,
-    marginBottom:5,
-    marginLeft:10,
+    padding: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 10
     // borderBottomWidth:1,
     // borderTopWidth:1,
     // borderLeftWidth: 1,
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 8,
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   points: {
     fontSize: 30,
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     marginBottom: 10
-  },
+  }
 });
 
 export default SinglePlayer;

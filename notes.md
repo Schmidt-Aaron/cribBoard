@@ -9,13 +9,8 @@
 - add 3-4 player mode
 - winner animation
 - add settings
-- add game board
-  - short game board
-  - 3 player board
-  - 3 player short game
-  - 4 player board
-  - 4 player short game
 - short game
+  - add game board
 - pegs
 - peg colors
 - change player names

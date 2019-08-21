@@ -27,37 +27,37 @@ const PointSelector = props => {
       <View style={styles.pointSelectContainer}>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(1, 10, 'One')}
+          onPress={() => props.makeRange(1, 10, "One")}
         >
           <Text>1-10</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(11, 20, 'One')}
+          onPress={() => props.makeRange(11, 20, "One")}
         >
           <Text>11-20</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(21, 29, 'One')}
+          onPress={() => props.makeRange(21, 29, "One")}
         >
           <Text>21-29</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(1, 10, 'Two')}
+          onPress={() => props.makeRange(1, 10, "Two")}
         >
           <Text>1-10</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(11, 20, 'Two')}
+          onPress={() => props.makeRange(11, 20, "Two")}
         >
           <Text>11-20</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.pointRange}
-          onPress={() => props.makeRange(21, 29, 'Two')}
+          onPress={() => props.makeRange(21, 29, "Two")}
         >
           <Text>21-29</Text>
         </TouchableOpacity>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: 'lightgrey',
+    borderColor: "lightgrey",
     borderWidth: 1
   },
   pointsContainer: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   point: {
-    borderColor: 'lightgrey',
+    borderColor: "lightgrey",
     borderWidth: 1,
     flex: 1,
     justifyContent: "center",
