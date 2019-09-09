@@ -10,8 +10,8 @@ const Players = props => {
         return (
           <SinglePlayer
             key={player}
-            history={props[`player${player}History`]}
-            points={props[`player${player}Score`]}
+            history={props.history[player]}
+            points={props.scores[player]}
             name={props.playerNames[player]}
             player={player}
             undo={props.undoLastScore}

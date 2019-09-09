@@ -91,43 +91,52 @@ export default class App extends Component {
     return arr.reduce((a, b) => a + b, 0);
   }
 
+  /**
+   *
+   * @param {String} player: "One" "Two" "Three" "Four"
+   * @param {Number} points
+   */
   updateScore(player, points) {
     if (this.state.activeGame === true) {
-      let historyString = `player${player}History`;
-      let scoreString = `player${player}Score`;
-      let tempArr = this.state[historyString];
+      let tempArr = this.state.history[player];
       tempArr.push(points);
       let tempPoints = this.currentPoints(tempArr);
       if (tempPoints >= 121) {
         tempPoints = 121;
         this.setState({
-          [historyString]: tempArr,
-          [scoreString]: tempPoints,
+          history: {
+            ...this.state.history,
+            [player]: tempArr
+          },
+          scores: {
+            ...this.state.scores,
+            [player]: tempPoints
+          },
           activeGame: false
         });
       }
       if (tempPoints < 121) {
         this.setState({
-          [historyString]: tempArr,
-          [scoreString]: tempPoints
+          history: {
+            ...this.state.history,
+            [player]: tempArr
+          },
+          scores: {
+            ...this.state.scores,
+            [player]: tempPoints
+          }
         });
       }
     }
   }
 
+  // Scores back to zero; Names are the same
   resetGame() {
     this.setState({
       activeGame: true,
       pointRange: [],
       currentPlayer: "",
-      playerOneScore: 0,
-      playerTwoScore: 0,
-      playerThreeScore: 0,
-      playerFourScore: 0,
-      playerOneHistory: [],
-      playerTwoHistory: [],
-      playerThreeHistory: [],
-      playerFourHistory: [],
+
       scores: {
         One: 0,
         Two: 0,
@@ -195,8 +204,8 @@ export default class App extends Component {
       <View style={styles.container}>
         <ImageBackground source={background} style={styles.background}>
           <Title
-            resetGame={this.resetGame}
             {...this.state}
+            resetGame={this.resetGame}
             changeNumberOfPlayers={this.changeNumberOfPlayers}
             changeName={this.changeName}
           />

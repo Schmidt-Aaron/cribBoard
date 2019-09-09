@@ -77,13 +77,18 @@ const Board = props => {
 
   let winner = false; // controls style on the last peg
 
-  if (
-    props.playerOneScore === 121 ||
-    props.playerTwoScore === 121 ||
-    props.playerThreeScore === 121 ||
-    props.playerFourScore === 121
-  )
-    winner = true;
+  for (score in props.score) {
+    if (score === 121) {
+      winner = true;
+    }
+  }
+  // if (
+  //   props.score[""] === 121 ||
+  //   props.playerTwoScore === 121 ||
+  //   props.playerThreeScore === 121 ||
+  //   props.playerFourScore === 121
+  // )
+  //   winner = true;
 
   return (
     <View style={styles.container}>
