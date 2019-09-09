@@ -6,14 +6,14 @@ import SinglePlayer from "./SinglePlayer";
 const Players = props => {
   return (
     <View style={styles.container}>
-      {props.playerArr.map(string => {
+      {props.playerArr.map(player => {
         return (
           <SinglePlayer
-            key={string}
-            history={props[`player${string}History`]}
-            points={props[`player${string}Score`]}
-            name={props[`player${string}Name`]}
-            player={string}
+            key={player}
+            history={props[`player${player}History`]}
+            points={props[`player${player}Score`]}
+            name={props.playerNames[player]}
+            player={player}
             undo={props.undoLastScore}
             changeName={props.changeName}
           />

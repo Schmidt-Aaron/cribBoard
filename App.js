@@ -18,6 +18,12 @@ export default class App extends Component {
       playerTwoName: "Player Two",
       playerThreeName: "Player Three",
       playerFourName: "Player Four",
+      playerNames: {
+        One: "Player One",
+        Two: "Player Two",
+        Three: "Player Three",
+        Four: "Player Four"
+      },
       playerOneScore: 0,
       playerTwoScore: 0,
       playerThreeScore: 0,
@@ -73,9 +79,11 @@ export default class App extends Component {
   // change peg color
 
   changeName(player, name) {
-    let string = `player${player}Name`;
     this.setState({
-      [string]: name
+      playerNames: {
+        ...this.state.playerNames,
+        [player]: name
+      }
     });
   }
 
