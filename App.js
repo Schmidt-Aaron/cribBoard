@@ -87,7 +87,7 @@ export default class App extends Component {
     });
   }
 
-  currentPoints(arr) {
+  currentScore(arr) {
     return arr.reduce((a, b) => a + b, 0);
   }
 
@@ -100,7 +100,7 @@ export default class App extends Component {
     if (this.state.activeGame === true) {
       let tempArr = this.state.history[player];
       tempArr.push(points);
-      let tempPoints = this.currentPoints(tempArr);
+      let tempPoints = this.currentScore(tempArr);
       if (tempPoints >= 121) {
         tempPoints = 121;
         this.setState({
@@ -186,15 +186,18 @@ export default class App extends Component {
 
   undoLastScore(player) {
     if (this.state.activeGame === true) {
-      let historyString = `player${player}History`;
-      let playerHistory = this.state[historyString];
-      let scoreString = `player${player}Score`;
-      playerHistory.pop();
-      console.log(playerHistory);
-      let newScore = this.currentPoints(playerHistory);
+      let scoreArr = this.state.history[player];
+      scoreArr.pop();
+      let updatedScore = this.currentScore(scoreArr);
       this.setState({
-        [historyString]: playerHistory,
-        [scoreString]: newScore
+        scores: {
+          ...this.state.scores,
+          [player]: updatedScore
+        },
+        history: {
+          ...this.state.history,
+          [player]: scoreArr
+        }
       });
     }
   }
