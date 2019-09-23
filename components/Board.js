@@ -42,7 +42,6 @@ const RowOfPegs = props => {
   let start = props.start || 1; // temp
   let finish = props.finish || 40; // temp
   let spacerNum = 1; // used as a key value for our spacers
-  let firstRow = null; // toggle for row specific holes
   let rowArray = [];
   let active = false;
   // console.log(playerScore)
@@ -82,13 +81,6 @@ const Board = props => {
       winner = true;
     }
   }
-  // if (
-  //   props.score[""] === 121 ||
-  //   props.playerTwoScore === 121 ||
-  //   props.playerThreeScore === 121 ||
-  //   props.playerFourScore === 121
-  // )
-  //   winner = true;
 
   return (
     <View style={styles.container}>
@@ -102,14 +94,10 @@ const Board = props => {
             <View style={styles.rowSpacer}>
               {players.map(player => {
                 let active = false;
-                if (player === "One" && props.playerOneScore === 0)
+
+                if (props.scores[player] === 0) {
                   active = true;
-                if (player === "Two" && props.playerTwoScore === 0)
-                  active = true;
-                if (player === "Three" && props.playerThreeScore === 0)
-                  active = true;
-                if (player === "Four" && props.playerFourScore === 0)
-                  active = true;
+                }
                 return (
                   <Hole
                     active={active}
@@ -125,10 +113,7 @@ const Board = props => {
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => {
                 let score = 0;
-                if (player === "One") score = props.playerOneScore;
-                if (player === "Two") score = props.playerTwoScore;
-                if (player === "Three") score = props.playerThreeScore;
-                if (player === "Four") score = props.playerFourScore;
+                score = props.scores[player];
                 return (
                   <RowOfPegs
                     playerScore={score}
@@ -156,10 +141,7 @@ const Board = props => {
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => {
                 let score = 0;
-                if (player === "One") score = props.playerOneScore;
-                if (player === "Two") score = props.playerTwoScore;
-                if (player === "Three") score = props.playerThreeScore;
-                if (player === "Four") score = props.playerFourScore;
+                score = props.scores[player];
                 return (
                   <RowOfPegs
                     playerScore={score}
@@ -186,10 +168,7 @@ const Board = props => {
               {/* this function will populate the peg areas with rows based on how many players are passed into this component */}
               {players.map(player => {
                 let score = 0;
-                if (player === "One") score = props.playerOneScore;
-                if (player === "Two") score = props.playerTwoScore;
-                if (player === "Three") score = props.playerThreeScore;
-                if (player === "Four") score = props.playerFourScore;
+                score = props.scores[player];
                 return (
                   <RowOfPegs
                     playerScore={score}
